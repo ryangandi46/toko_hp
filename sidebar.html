@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <!--fonts google-->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Ubuntu:wght@400;500;700&display=swap" rel="stylesheet">
+
+    <!--my style-->
+    <link rel="stylesheet" href="style.css">
+     
+</head>
+<body>
+    
+    <div class="container">
+        <div class="sidebar">
+           <div class="header">
+               <div class="list-item">
+                   <a href="#">                        
+                       <span class="description-header" >Berkah Jaya</span>
+                   </a>
+               </div>
+
+               <div class="ilustration">
+                   <img src="assets/ilustration.png" alt="">
+               </div>
+           </div>
+          
+           <p>Welcome <?=$_SESSION['fullname'];?>, you are login as <?=$_SESSION['usertype'];?></p>
+           <?php
+           // call connection php mysql
+           include "connection.php";
+           
+           // make query SELECT FROM WHERE
+           $query="SELECT * FROM users WHERE userid='$_SESSION[userid]'";
+           
+           // run query
+           $user=mysqli_query($db_connection, $query);
+           
+           // extract data from query result
+           $data=mysqli_fetch_assoc($user);
+           ?>
+
+           <div class="main">
+               <div class="list-item">
+                   <a href="read_stock.php">
+                       <img src="assets/stock.png" alt="" class="icon" style="height: 20px; width: 20px;">
+                       <span class="description">Stock</span>
+                   </a>
+               </div>    
+           </div>
+
+           <?php if($_SESSION['usertype']=='Admin') { ?>
+           <div class="main">
+               <div class="list-item">
+                   <a href="read_user.php">
+                       <img src="assets/user.png" alt="" class="icon" style="height: 20px; width: 20px;">
+                       <span class="description">Pegawai</span>
+                   </a>
+               </div>    
+           <div class="main">
+               <div class="list-item">
+                   <a href="report.php">
+                       <img src="assets/report.png" alt="" class="icon" style="height: 20px; width: 20px;">
+                       <span class="description">Report</span>
+                   </a>
+               </div>    
+           </div><?php } ?>
+           <div class="main">
+               <div class="list-item">
+                   <a href="read_buyer.php">
+                       <img src="assets/pembeli.png" alt="" class="icon" style="height: 21px; width: 21px;">
+                       <span class="description">Pembeli</span>
+                   </a>
+               </div>    
+           </div>
+           <div class="main">
+               <div class="list-item">
+                   <a href="read_transaksi.php">
+                       <img src="assets/transaksi (2).png" alt="" class="icon" style="height: 20px; width: 20px;">
+                       <span class="description">Transaksi</span>
+                   </a>
+               </div>    
+           </div>
+           <div class="main">
+               <div class="list-item">
+                   <a href="change_password.php">
+                       <img src="assets/changepass.png" alt="" class="icon" style="height: 22px; width: 22px;">
+                       <span class="description">Change Password</span>
+                   </a>
+               </div>    
+           <div class="main">
+               <div class="list-item">
+                   <a href="logout.php">
+                       <img src="assets/logout.png" alt="" class="icon" style="height: 20px; width: 20px;">
+                       <span class="description">Logout</span>
+                   </a>
+               </div>    
+           </div>
+                      
+       </div> 
+
+            <div class="main-content">
+                <div id="menu-button">
+                    <input type="checkbox" id="menu-checkbox">
+                    <label for="menu-checkbox" id="menu-label">
+                        <div id="hamburger"></div>
+                    </label>
+                </div>
+            </div>
+    </div>
+
+
+    <script src="script.js"></script>
+</body>
+</html>
