@@ -334,6 +334,16 @@ textarea{
     padding: 2px;
 }
 
+.box-search{
+  display: flex;
+  justify-content:center;
+}
+
+.field-search{
+  width: 250px;
+  height: 35px;
+}
+
 .btn-delete {
   background-color: #db5d59;
   color: white;
@@ -347,6 +357,13 @@ textarea{
   padding: 5px 5px 5px 5px;    
 }
 .btn-add {
+  background-color: #579BB1;
+  color: white;
+  width: 90px;
+  height: 35px;
+  padding: 5px 5px 5px 5px;    
+}
+.btn-search {
   background-color: #579BB1;
   color: white;
   width: 90px;
@@ -422,3 +439,37 @@ p {
   color: white;
 }
 
+/* Style tab */
+.tab {
+  overflow: hidden;
+  border: 1px solid #ccc;
+  background-color: #f1f1f1;
+}
+
+.tab button {
+  background-color: inherit;
+  float: left;
+  border: none;
+  outline: none;
+  cursor: pointer;
+  padding: 14px 16px;
+  transition: 0.3s;
+}
+
+.tab button:hover {
+  background-color: #297F87;
+}
+
+/* Create an active/current tablink class */
+.tab button.active {
+  background-color: #297F87;
+  color: #eeeeee;
+}
+
+/* Style the tab content */
+.tabcontent {
+  display: none;
+  padding: 6px 12px;
+  border: 1px solid #ccc;
+  border-top: none;
+}

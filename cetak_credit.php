@@ -43,8 +43,8 @@ if (!isset($_SESSION['login'])) {
             <td style="text-align: left;">: <?= $data1['phone'] ?></td>
         </tr>        
         <tr>
-            <td style="text-align: left;">Harga Satuan</td>
-            <td style="text-align: left;">: <?= $data1['price'] ?></td>
+            <td style="text-align: left;">Harga</td>
+            <td style="text-align: left;">: Rp <?= number_format($data1['price'], 0, ',', '.'); ?></td>
         </tr>
         <tr>
             <td style="text-align: left;">Jumlah</td>
@@ -52,11 +52,11 @@ if (!isset($_SESSION['login'])) {
         </tr>
         <tr>
             <td style="text-align: left;">Total Harga</td>
-            <td style="text-align: left;">: <?= $data1['total_harga'] ?></td>
-        </tr>
+            <td style="text-align: left;">: Rp <?= number_format($data1['total_harga'], 0, ',', '.'); ?></td>
+        </tr>      
         <tr>
             <td style="text-align: left;">Tunai</td>
-            <td style="text-align: left;">: <?= $data1['tunai'] ?></td>
+            <td style="text-align: left;">: Rp <?= number_format($data1['tunai'], 0, ',', '.'); ?></td>
         </tr>
         <tr>
             <td style="text-align: left;">Metode Pembayaran</td>
@@ -92,14 +92,14 @@ if (!isset($_SESSION['login'])) {
                         <tr>
                             <td><?= $i++ ?></td>
                             <td><?= date('l, d M Y H:i:s', strtotime($data2['date'])) ?></td>
-                            <td><?= $data2['uang_muka'] ?></td>
+                            <td>Rp <?=number_format($data2['uang_muka'], 0, ',', '.');  ?></td>
                             <td><?= $data2['angsuran'] ?></td>
                             <td><?= $data2['angsuran_berjalan'] ?></td>
-                            <td><?= $data2['dana'] ?></td>                            
+                            <td>Rp<?=number_format($data2['dana'], 0, ',', '.');  ?></td>                            
                         </tr>
                     <?php endforeach; ?>
                     <tr>
-                        <th colspan="9" align="center">Sisa angsuran = <?= $sisa_angsuran ?>, Sisa pembayaran = <?= $sisa_dana ?></th>
+                        <th colspan="9" align="center">Sisa angsuran = Rp <?=number_format($sisa_angsuran, 0, ',', '.')  ?>, Sisa pembayaran = <?= $sisa_dana ?></th>
                     </tr>
                 <?php } else { ?>
                     <tr>
@@ -109,7 +109,7 @@ if (!isset($_SESSION['login'])) {
             </table>        
 
     <script>
-        window.print();
+        window.print();        
     </script>
 </body>
 

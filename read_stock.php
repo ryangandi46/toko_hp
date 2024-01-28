@@ -4,6 +4,7 @@ if (!isset($_SESSION['login'])) {
     echo "<script>alert('Please login first !');window.location.replace('form_login.php');</script>";
 }
 ?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -26,6 +27,10 @@ if (!isset($_SESSION['login'])) {
         <div class="content">
             <h1>Berkah Jaya</h1>
             <h3>Stock</h3>
+            <form method="GET" class="box-search">
+                <input type="text" name="keyword" placeholder="Search..." class="field-search">
+                <input type="submit" value="Search" class="btn-search">
+            </form>
             <a href="add_stock.php"><input type="button" class="btn-add" value="Add Stock" style="margin: 10px 0 10px 0"></a>
             <link rel="stylesheet" href="style.css">
             <table border="1">
@@ -40,12 +45,14 @@ if (!isset($_SESSION['login'])) {
                 </tr>
                 <?php
                 include "connection.php"; // call connection
-                $query = "SELECT * FROM stock"; // make a sql query 
-                $pets = mysqli_query($db_connection, $query); // run query 
 
-                $data = mysqli_fetch_assoc($pets);
-                $i = 1; // initial counter for numbering        
-                foreach ($pets as $data) : // loop to extract data from database
+                // Handle search query
+                $keyword = isset($_GET['keyword']) ? $_GET['keyword'] : '';
+                $query = "SELECT * FROM stock WHERE phone LIKE '%$keyword%'";
+                $stock = mysqli_query($db_connection, $query);
+
+                $i = 1; // initial counter for numbering
+                foreach ($stock as $data) : // loop to extract data from database
                 ?>
                     <tr>
                         <td><?php echo $i++; ?></td>
@@ -59,7 +66,7 @@ if (!isset($_SESSION['login'])) {
                         <td align="center">
                             <img src="uploads/stock/<?php echo $data['photo_stock']; ?>" width="50" height="60"><br>                            
                         </td>
-                        <td><?php echo $data['price']; ?></td>
+                        <td>Rp <?= number_format($data['price'], 0, ',', '.'); ?></td>
 
                         <!--cara lain untuk menampilkan data, tapi ketika hanya echo satu baris-->
                         <td><?= $data['stok']; ?></td>

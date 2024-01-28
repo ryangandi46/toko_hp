@@ -70,28 +70,35 @@ if (!isset($_SESSION['login'])) {
 						<th align="center">Tipe Pembayaran</th>
 						<th align="center">Status</th>
 					</tr>
-					<?php
+					<?php					
 					if (mysqli_num_rows($report) > 0) {
 						$i = 1;
 						$total = 0;
+						$jumlahTerjual = 0;
 						foreach ($report as $data) :
 							$total = $total + $data['total_harga'] + $data['tunai'];
+							$jumlahTerjual += $data['jumlah'];
 					?>
 							<tr>
 								<td><?= $i++ ?></td>
 								<td><?= date('D, d-M-Y H:i:s', strtotime($data['tanggal'])) ?></td>
 								<td><?= $data['name_buyer'] ?></td>
 								<td><?= $data['phone'] ?></td>
-								<td><?= $data['price'] ?></td>
+								<td>Rp <?= number_format($data['price'], 0, ',', '.'); ?></td>
 								<td><?= $data['jumlah'] ?></td>
-								<td><?= $data['total_harga'] ?></td>
-								<td><?= $data['tunai']; ?></td>
+								<td>Rp <?= number_format($data['total_harga'], 0, ',', '.'); ?></td>
+								<td>Rp <?= number_format($data['tunai'], 0, ',', '.'); ?></td>
 								<td><?= $data['type_pembayaran'] ?></td>
 								<td><?= $data['status'] ?></td>
 							</tr>
 						<?php endforeach; ?>
 						<tr>
-							<th colspan="10" align="center">Total : RP <?= $total ?></th>
+							<th>Terjual</th>
+							<th colspan="9" align="left">: <?php echo $jumlahTerjual; ?> Unit</th>
+						</tr>
+						<tr>
+							<th>total</th>
+							<th colspan="9" align="left">: <?php echo "RP " . number_format($total, 2, ',', '.'); ?></th>
 						</tr>
 					<?php } else { ?>
 						<tr>
@@ -101,12 +108,14 @@ if (!isset($_SESSION['login'])) {
 				</table><br>
 			<?php } ?>
 			<br>
+			<a href="cetak_report.php"><input type="button" class="btn-back" value="print" style="border: 0;"></a>
 			<a href="index.php"><input type="button" class="btn-back" value="Back to Home" style="border: 0;"></a>
 		</div>
 	</div>
 	</div>
 
 	<script src="script.js"></script>
+
 </body>
 
 </html>

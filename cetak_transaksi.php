@@ -40,7 +40,7 @@ if (!isset($_SESSION['login'])) {
         </tr>
         <tr>
             <td style="text-align: left;">Harga</td>
-            <td style="text-align: left;">: <?= $data1['price'] ?></td>
+            <td style="text-align: left;">: Rp <?= number_format($data1['price'], 0, ',', '.'); ?></td>
         </tr>
         <tr>
             <td style="text-align: left;">Jumlah</td>
@@ -48,15 +48,11 @@ if (!isset($_SESSION['login'])) {
         </tr>
         <tr>
             <td style="text-align: left;">Total Harga</td>
-            <td style="text-align: left;">: <?= $data1['total_harga'] ?></td>
-        </tr>
-        <tr>
-            <td style="text-align: left;">Total Harga</td>
-            <td style="text-align: left;">: <?= $data1['total_harga'] ?></td>
-        </tr>
+            <td style="text-align: left;">: Rp <?= number_format($data1['total_harga'], 0, ',', '.'); ?></td>
+        </tr>      
         <tr>
             <td style="text-align: left;">Tunai</td>
-            <td style="text-align: left;">: <?= $data1['tunai'] ?></td>
+            <td style="text-align: left;">: Rp <?= number_format($data1['tunai'], 0, ',', '.'); ?></td>
         </tr>
         <tr>
             <td style="text-align: left;">Metode Pembayaran</td>
@@ -69,7 +65,7 @@ if (!isset($_SESSION['login'])) {
     </table>
 
     <script>
-        window.print();
+        window.print();       
     </script>
 </body>
 

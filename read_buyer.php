@@ -25,6 +25,10 @@ if (!isset($_SESSION['login'])) {
         <div class="content">
             <h1>Berkah Jaya</h1>
             <h3>Buyer</h3>
+            <form method="GET" class="box-search">
+                <input type="text" name="keyword" placeholder="Search..." class="field-search">
+                <input type="submit" value="Search" class="btn-search">
+            </form>
             <a href="add_buyer.php"><input type="button" class="btn-add" value="Add buyer" style="margin: 10px 0 10px 0"></a>
             <table border="1">
                 <tr>
@@ -38,7 +42,8 @@ if (!isset($_SESSION['login'])) {
                 </tr>
                 <?php
                 include "connection.php"; // call connection
-                $query = "SELECT * FROM buyer"; // make a sql query 
+                $keyword = isset($_GET['keyword']) ? $_GET['keyword'] : '';              
+                $query = "SELECT * FROM buyer WHERE name_buyer LIKE '%$keyword'"; // make a sql query 
                 $pets = mysqli_query($db_connection, $query); // run query 
 
                 $i = 1; // initial counter for numbering

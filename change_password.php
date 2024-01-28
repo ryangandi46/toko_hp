@@ -1,8 +1,5 @@
 <?php
 session_start(); // start the session
-if (!isset($_SESSION['login'])) {
-    echo "<script>alert('Please login first !');window.location.replace('form_login.php');</script>";
-}
 ?>
 <!DOCTYPE html>
 <html>

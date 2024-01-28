@@ -58,19 +58,32 @@ if (!isset($_SESSION['login'])) {
                 </tr>
                 <tr>
                     <td style="text-align: left;">Handphone / Harga</td>
-                    <td style="text-align: left;">: <?= $data1['phone'] ?> / <?= $data1['price'] ?></td>
+                    <td style="text-align: left;">: <?= $data1['phone'] ?> / Rp <?= number_format($data1['price'], 0, ',', '.'); ?></td>
                 </tr>
                 <tr>
                     <td style="text-align: left;">Jumlah / Total harga</td>
-                    <td style="text-align: left;">: <?= $data1['jumlah'] ?> / <?= $data1['total_harga'] ?> </td>
-                </tr>                
+                    <td style="text-align: left;">: <?= $data1['jumlah'] ?> / Rp <?= number_format($data1['total_harga'], 0, ',', '.'); ?> </td>
+                </tr>
                 <tr>
                     <td style="text-align: left;"> Tunai</td>
-                    <td style="text-align: left;">: <?= $data1['tunai'] ?></td>
+                    <td style="text-align: left;">: Rp <?= number_format($data1['tunai'], 0, ',', '.'); ?></td>
                 </tr>
                 <tr>
                     <td style="text-align: left;"> Status</td>
-                    <td style="text-align: left;">:<?= $data1['status'] ?></td>
+                    <td style="text-align: left;">: <?= $data1['status'] ?></td>
+                </tr>
+                <?php
+                    $harga = $data1['total_harga'];
+                    $tunai = $data1['tunai'];
+                    $sisa_dana = $harga - $tunai - $data2['dana'];
+                    ?>
+                <tr>
+                    <td style="text-align: left;"> Angsuran Dibayarkan</td>
+                    <td style="text-align: left;">: <?= $data2['angsuran_berjalan'] ?></td>
+                </tr>
+                <tr>
+                    <td style="text-align: left;">Sisa pembayaran</td>
+                    <td style="text-align: left;">: Rp <?= number_format($sisa_dana, 0, ',', '.'); ?></td>
                 </tr>
             </table>
             <h3>Add Credit</h3>
@@ -78,7 +91,7 @@ if (!isset($_SESSION['login'])) {
                 <table>
                     <tr>
                         <td>Uang Muka</td>
-                        <td><input type="number" name="uang_muka"  value="<?= $data1['tunai'] ?>" readonly></td>
+                        <td><input type="number" name="uang_muka" value="<?= number_format($data1['tunai'], 0, ',', '.'); ?>" readonly><?= number_format($data1['tunai'], 0, ',', '.'); ?></td>
                     </tr>
                     <tr>
                         <td>Angsuran</td>
@@ -100,14 +113,14 @@ if (!isset($_SESSION['login'])) {
                                 <?php } ?>
                             </select>
                         </td>
-                    </tr>
+                    </tr>                   
                     <tr>
                         <td>Angsuran Berjalan</td>
                         <td><input type="number" name="angsuran_berjalan" required></td>
                     </tr>
                     <tr>
                         <td>Dana masuk</td>
-                        <td><input type="number" name="dana"  required></td>
+                        <td><input type="number" name="dana" required></td>
                     </tr>
                     <tr>
                         <td></td>

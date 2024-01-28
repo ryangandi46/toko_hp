@@ -16,7 +16,7 @@
                 // variale session untuk menyimpan data sementara di server
                 // if password match, then make session variable
                 $_SESSION['login']=TRUE;
-                $_SESSION['userid']=$user['id'];
+                $_SESSION['userid']=$user['userid'];
                 $_SESSION['username']=$user['username'];
                 $_SESSION['password']=$user['password'];
                 $_SESSION['usertype']=$user['usertype'];
