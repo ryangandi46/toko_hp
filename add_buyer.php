@@ -23,7 +23,7 @@ if (!isset($_SESSION['login'])) {
 
         </div>
         <div class="content">
-            <h3>Form Add Stock</h3>
+            <h3>Form Add Buyer</h3>
             <form method="post" action="create_buyer.php">
                 <table>
                     <tr>
@@ -37,15 +37,15 @@ if (!isset($_SESSION['login'])) {
                     </tr>
                     <tr>
                         <td>NO KTP</td>
-                        <td><input type="text" name="noktp" required></td>
+                        <td><input type="text" name="noktp" required maxlength="16"></td>
                     </tr>
                     <tr>
                         <td>NO NPWP</td>
-                        <td><input type="text" name="npwp" required></td>
+                        <td><input type="text" name="npwp" required maxlength="16"></td>
                     </tr>
                     <tr>
                         <td>handphone</td>
-                        <td><input type="text" name="phone_buyer" required></td>
+                        <td><input type="text" name="phone_buyer" required maxlength="12"></td>
                     </tr>
                     <tr>
                         <td></td>

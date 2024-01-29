@@ -91,7 +91,7 @@ if (!isset($_SESSION['login'])) {
                 <table>
                     <tr>
                         <td>Uang Muka</td>
-                        <td><input type="number" name="uang_muka" value="<?= number_format($data1['tunai'], 0, ',', '.'); ?>" readonly><?= number_format($data1['tunai'], 0, ',', '.'); ?></td>
+                        <td><input type="number" name="uang_muka" value="<?=$data1['tunai'] ?>" readonly></td>
                     </tr>
                     <tr>
                         <td>Angsuran</td>

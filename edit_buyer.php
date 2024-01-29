@@ -49,15 +49,15 @@ if (!isset($_SESSION['login'])) {
                     </tr>
                     <tr>
                         <td>NO KTP</td>
-                        <td><input type="text" name="noktp" value="<?= $data['noktp'] ?>" required></td>
+                        <td><input type="text" name="noktp" value="<?= $data['noktp'] ?>" required maxlength="16"></td>
                     </tr>
                     <tr>
                         <td>NO NPWP</td>
-                        <td><input type="text" name="npwp" value="<?= $data['npwp'] ?>" required></td>
+                        <td><input type="text" name="npwp" value="<?= $data['npwp'] ?>" required maxlength="16"></td>
                     </tr>
                     <tr>
                         <td>Phone</td>
-                        <td><input type="text" name="phone_buyer" value="<?= $data['nohp_buyer'] ?>" required></td>
+                        <td><input type="text" name="phone_buyer" value="<?= $data['nohp_buyer'] ?>" required maxlength="12"></td>
                     </tr>
                     <tr>
                         <td></td>

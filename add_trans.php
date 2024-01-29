@@ -25,7 +25,7 @@ if (!isset($_SESSION['login'])) {
             <?php
             // call connection php mysql
             include "connection.php";
-
+            $user_id = $_SESSION['login'];
             // make query SELECT FROM WHERE
             $querybuy = "SELECT * FROM buyer";
 
@@ -47,6 +47,14 @@ if (!isset($_SESSION['login'])) {
             <form method="post" action="create_transaksi.php">
                 <table>
                     <tr>
+                        <td>Pegawai</td>
+                        <td><input type="text" name="" value="<?= $_SESSION['username'] ?>" readonly></td>
+                    </tr>
+                    <tr>
+                       <!-- //manipulasi  hidden field  -->
+                        <td><input type="text"  name="user" value="<?= $_SESSION['userid'] ?>"></td>
+                    </tr>
+                    <tr>
                         <td>Buyer</td>
                         <td>
                             <select name="buyer" required>
@@ -57,30 +65,29 @@ if (!isset($_SESSION['login'])) {
                             </select>
                         </td>
                     </tr>
-                    <tr>
+                    <!-- <tr>
                         <td>Pegawai</td>
                         <td>
                             <select name="user" required>
                                 <option value="">-Pilih pegawai-</option>
                                 <?php foreach ($user as $data3) : ?>
-                                    <option value="<?= $data3['userid'] ?>"><?= $data3['username'] ?></option>
+                                    <option value="<?= $data3['userid'] ?>"><?= $data3['username']  ?></option>
                                 <?php endforeach; ?>
                             </select>
                         </td>
-                    </tr>
-
+                    </tr> -->
                     <tr>
                         <td>ID Phone</td>
-                        <td><input type="text" name="id_phone" value="<?= $data2['id_stock'] ?>" required></td>
+                        <td><input type="text" name="id_phone" value="<?= $data2['id_stock'] ?>" readonly></td>
                     </tr>
 
                     <tr>
                         <td>Phone</td>
-                        <td><input type="text" name="phone" value="<?= $data2['phone'] ?>" required></td>
+                        <td><input type="text" name="phone" value="<?= $data2['phone'] ?>" readonly></td>
                     </tr>
                     <tr>
                         <td>Harga Satuan</td>
-                        <td><input type="number" name="harga" id="harga" value="<?= $data2['price'] ?>" required></td>
+                        <td><input type="number" name="harga" id="harga" value="<?= $data2['price'] ?>" readonly></td>
                     </tr>
                     <tr>
                         <td>Jumlah</td>
@@ -115,7 +122,7 @@ if (!isset($_SESSION['login'])) {
                         <td>
                             <input type="submit" name="save" value="SAVE" class="btn-save" onclick="confirmTransaction()" required>
                             <input type="submit" name="reset" value="RESET" class="btn-reset" required>
-                            <input type="hidden" name="id_stock" value="<?= $data2['id_stock'] ?>">                            
+                            <input type="hidden" name="id_stock" value="<?= $data2['id_stock'] ?>">
                         </td>
                     </tr>
                 </table>
@@ -148,6 +155,13 @@ if (!isset($_SESSION['login'])) {
                 window.location.replace("add_transaksi.php");
             }
         }
+    </script>
+    <script>
+        function hideInput() {
+            document.getElementById("user").style.display = "none";
+        }
+
+        hideInput();
     </script>
 </body>
 

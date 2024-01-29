@@ -99,7 +99,7 @@ if (!isset($_SESSION['login'])) {
                         </tr>
                     <?php endforeach; ?>
                     <tr>
-                        <th colspan="9" align="center">Sisa angsuran = Rp <?=number_format($sisa_angsuran, 0, ',', '.')  ?>, Sisa pembayaran = <?= $sisa_dana ?></th>
+                        <th colspan="9" align="center">Sisa angsuran = <?=$sisa_angsuran  ?>, Sisa pembayaran = Rp<?= number_format($sisa_dana, 0, ',', '.'); ?></th>
                     </tr>
                 <?php } else { ?>
                     <tr>

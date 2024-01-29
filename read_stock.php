@@ -12,6 +12,7 @@ if (!isset($_SESSION['login'])) {
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
     <title>Berkah Jaya</title>
     <?php include "sidebar.php"; ?>
 </head>
@@ -27,12 +28,15 @@ if (!isset($_SESSION['login'])) {
         <div class="content">
             <h1>Berkah Jaya</h1>
             <h3>Stock</h3>
+
+
             <form method="GET" class="box-search">
                 <input type="text" name="keyword" placeholder="Search..." class="field-search">
                 <input type="submit" value="Search" class="btn-search">
             </form>
             <a href="add_stock.php"><input type="button" class="btn-add" value="Add Stock" style="margin: 10px 0 10px 0"></a>
             <link rel="stylesheet" href="style.css">
+
             <table border="1">
                 <tr>
                     <th>NO</th>
@@ -57,14 +61,15 @@ if (!isset($_SESSION['login'])) {
                     <tr>
                         <td><?php echo $i++; ?></td>
                         <td>
-                        <?php if($data['stok'] > 0){ ?>                           
-                            <a href="add_trans.php?id_stock=<?= $data['id_stock'] ?>"><?= $data['phone']; ?></a>                                                
-                        <?php }else{ ?>
-                            <?= $data['phone']; ?>
-                        <?php } ?>
-                        </td>                    
+                            <?php if ($data['stok'] > 0) { ?>
+                                <a href="add_trans.php?id_stock=<?= $data['id_stock'] ?>"><?= $data['phone']; ?></a>
+                              
+                            <?php } else { ?>
+                                <?= $data['phone']; ?>
+                            <?php } ?>
+                        </td>
                         <td align="center">
-                            <img src="uploads/stock/<?php echo $data['photo_stock']; ?>" width="50" height="60"><br>                            
+                            <img src="uploads/stock/<?php echo $data['photo_stock']; ?>" width="50" height="60"><br>
                         </td>
                         <td>Rp <?= number_format($data['price'], 0, ',', '.'); ?></td>
 
@@ -78,12 +83,11 @@ if (!isset($_SESSION['login'])) {
                 <?php endforeach; ?>
             </table>
             <a href="index.php"><input type="button" class="btn-back" value="Back to Home" style="border: 0;"></a>
+            
         </div>
     </div>
 
     </div>
-
-
     <script src="script.js"></script>
 </body>
 
